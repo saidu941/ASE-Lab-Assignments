@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Bootstrap Snippet: Login Form</title>
+  
+  
+  <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+    <div class="wrapper">
+    <form name="myform" method="post" class="form-signin" action="Home.html">
+      <h2 class="form-signin-heading">Please login</h2>
+      <input type="text" class="form-control" id="nname" name="username" placeholder="Enter your email here" required="" autofocus="" />
+      <input type="password" class="form-control" id="ppwd" name="password" placeholder="" required=""/>
+      <label class="checkbox">
+        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
+      </label>
+        <input type="submit" value="submit"/>
+    </form>
+  </div>
+
+    <script>
+            function login(){
+                var x= document.forms["myform"]["username"].value;
+                var y = document.forms["myform"]["password"].value;
+
+                if(x!='saidu' && y!='saidu')
+                {
+                    alert("enter the correct details");
+                    return false;
+                }
+            }
+    </script>
+
+
+
+</body>
+</html>

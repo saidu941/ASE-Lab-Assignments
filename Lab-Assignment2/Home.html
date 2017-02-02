@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="" data-ng-app="GoogleDirection">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular Demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.1/angular.min.js" type="application/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqyal-4Xmz6LH6Ca9bnTnf7ItlrHxn_f0&libraries=places"></script>
+    <link rel="stylesheet" href="./main.css">
+
+    <style>
+        #map-canvas {
+            width: 640px;
+            height: 460px;
+        }
+        .weatherModule {
+            width: 630px;
+            height: 110px;
+        }
+    </style>
+</head>
+
+<body background="Background_pic.jpg">
+
+<div class="wrapp" ng-controller="googlemapoutput">
+    <div class="row">
+        <input type="text"   id="startlocation"/>
+        <input type="text"   id="endlocation" />
+        <button id="btn" ng-click="calcRoute()">
+            Get the Direction
+        </button>
+    </div>
+    <br><br>
+    <div id="map-canvas"></div>
+    <br>
+    <div>
+        <button id="wbtn" ng-click="getWeather()"> Show Weather </button>
+        <br/>
+        <br/>
+        <div id="weather_all" class="weatherModule"> </br>
+            <p id="start_weather" > </p>
+            <p id="dest_weather" > </p>
+        </div>
+    </div>
+</div>
+<br>
+</body>
+</html>
+
+
+<script>
+    angular.module('GoogleDirection', [])
+        .controller('googlemapoutput', function ($scope,$http) {
+
+            var map;
+            var mapOptions;
+            var directionsDisplay = new google.maps.DirectionsRenderer({
+                draggable: true
+            });
+            var directionsService = new google.maps.DirectionsService();
+
+            $scope.initialize = function () {
+                var pos = new google.maps.LatLng(39, -94.576);
+                var mapOptions = {
+                    zoom: 4,
+                    center: pos
+                };
+
+                map = new google.maps.Map(document.getElementById('map-canvas'),
+                    mapOptions);
+                new AutocompleteDirectionsHandler(map);
+            };
+
+
+            $scope.getWeather= function() {
+
+                var newer1 = document.getElementById('startlocation').value;
+                var newer2 = document.getElementById('endlocation').value;
+                var element_no1 = newer1;
+                var element_no2 = newer2;
+                var Index_Of_UN = element_no1.search("United States");
+                element_no1 = element_no1.substring(0, Index_Of_UN);
+                element_no2 = element_no2.substring(0, Index_Of_UN);
+                var state1 = element_no1.substring(Index_Of_UN - 4, Index_Of_UN - 2);
+                element_no1 = element_no1.substring(0, Index_Of_UN - 6);
+                var state2 = element_no2.substring(Index_Of_UN - 4, Index_Of_UN - 2);
+                element_no2 = element_no2.substring(0, Index_Of_UN - 6);
+                var Index_Of_Comma1 = element_no1.search(",");
+                var Index_Of_Comma2 = element_no2.search(",");
+                var city_no1 = element_no1.substring(Index_Of_Comma1 + 1, Index_Of_UN - 5);
+                var city_no2 = element_no2.substring(Index_Of_Comma2 + 1, Index_Of_UN - 5);
+                url1 = 'https://api.wunderground.com/api/bff0b04127d2aa6e/conditions/q/' + state1 + '/' + city_no1 + '.json';
+                url2 = 'https://api.wunderground.com/api/bff0b04127d2aa6e/conditions/q/' + state2 + '/' + city_no2 + '.json';
+                $http.get(url1).success(function(data) {
+                    console.log(data);
+                    temp = data.current_observation.temp_f;
+                    icon = data.current_observation.icon_url;
+                    weather = data.current_observation.weather;
+                    console.log(temp);
+                    document.getElementById("start_weather").innerHTML = "Currently " + temp + " &deg; F and " + weather + "";
+                })
+                $http.get(url2).success(function(data) {
+                    console.log(data);
+                    temp = data.current_observation.temp_f;
+                    icon = data.current_observation.icon_url;
+                    weather = data.current_observation.weather;
+                    console.log(temp);
+                    document.getElementById("dest_weather").innerHTML = "Currently " + temp + " &deg; F and " + weather + "";
+                })
+            }
+            $scope.calcRoute = function () {
+                var end = document.getElementById('endlocation').value;
+                var start = document.getElementById('startlocation').value;
+
+                var request = {
+                    origin: start,
+                    destination: end,
+                    travelMode: google.maps.TravelMode.DRIVING
+                };
+
+                directionsService.route(request, function (response, status) {
+                    if (status == google.maps.DirectionsStatus.OK) {
+                        directionsDisplay.setMap(map);
+                        directionsDisplay.setDirections(response);
+                        console.log(status);
+                    }
+
+                });
+            };
+
+            google.maps.event.addDomListener(window, 'load', $scope.initialize);
+        });
+    function AutocompleteDirectionsHandler(map) {
+        this.map = map;
+        this.originPlaceId = null;
+        this.destinationPlaceId = null;
+        var originInput = document.getElementById('startlocation');
+        var destinationInput = document.getElementById('endlocation');
+        var originAutocomplete = new google.maps.places.Autocomplete(
+            originInput, {placeIdOnly: true});
+        var destinationAutocomplete = new google.maps.places.Autocomplete(
+            destinationInput, {placeIdOnly: true});
+
+        this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
+        this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
+    }
+    AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode) {
+        var me = this;
+        autocomplete.bindTo('bounds', this.map);
+        autocomplete.addListener('place_changed', function() {
+            var place = autocomplete.getPlace();
+            if (!place.place_id) {
+                window.alert("Please select an option from the dropdown list.");
+                return;
+            }
+            if (mode === 'ORIG') {
+                me.originPlaceId = place.place_id;
+            } else {
+                me.destinationPlaceId = place.place_id;
+            }
+        });
+
+    };
+
+</script>
+
