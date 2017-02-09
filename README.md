@@ -7,3 +7,4 @@ LAB Assignment 1: https://github.com/saidu941/ASE-Lab-Assignments/wiki/Lab-Assig
 
 LAB Assignment 2: https://github.com/saidu941/ASE-Lab-Assignments/wiki/Lab-Assignment-2
 
+LAB Assignment 3: https://github.com/saidu941/ASE-Lab-Assignments/tree/master/Lab%20Assignment%203
