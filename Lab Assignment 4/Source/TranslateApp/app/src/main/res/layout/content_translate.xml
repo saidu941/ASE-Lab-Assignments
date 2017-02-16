@@ -56,7 +56,7 @@
             android:visibility="visible"
             android:textSize="@dimen/abc_text_size_medium_material"
             android:textColor="#3b40c6"
-            android:text="హలో ప్రపంచం"
+            android:text=""
             android:layout_marginTop="20dp" />
 
         <Button
