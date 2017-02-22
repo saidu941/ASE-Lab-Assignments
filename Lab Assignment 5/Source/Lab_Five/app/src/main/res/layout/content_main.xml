@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:showIn="@layout/activity_main">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/btn_upload"
+        android:layout_marginLeft="45dp"
+        android:layout_marginStart="45dp"
+        android:id="@+id/imageView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="Upload Picture"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_upload"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="21dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginBottom="25dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_marginTop="25dp"
+        android:id="@+id/txt_fname"
+        android:layout_below="@+id/imageView"
+        android:layout_alignLeft="@+id/btn_upload"
+        android:layout_alignStart="@+id/btn_upload"
+        android:hint="Enter First Name" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/txt_fname"
+        android:layout_alignLeft="@+id/txt_fname"
+        android:layout_alignStart="@+id/txt_fname"
+        android:layout_marginTop="21dp"
+        android:id="@+id/txt_lname"
+        android:hint="Enter Last Name" />
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_alignTop="@+id/txt_lbl_address"
+        android:layout_alignLeft="@+id/btn_signup"
+        android:layout_alignStart="@+id/btn_signup"
+        android:id="@+id/txt_address" />
+
+    <TextView
+        android:text="Address :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:id="@+id/txt_lbl_address"
+        android:textSize="18sp"
+        android:layout_below="@+id/txt_lname"
+        android:layout_alignLeft="@+id/txt_lname"
+        android:layout_alignStart="@+id/txt_lname" />
+
+    <Button
+        android:text="Sign Up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_signup"
+        android:onClick="onClickOfMapsButton"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_below="@+id/txt_address"
+        android:layout_toRightOf="@+id/txt_lbl_address"
+        android:layout_toEndOf="@+id/txt_lbl_address"
+        android:layout_marginTop="22dp" />
+</RelativeLayout>
+
