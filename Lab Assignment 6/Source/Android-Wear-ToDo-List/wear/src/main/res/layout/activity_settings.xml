@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingTop="10dp"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="About"
+        android:id="@+id/tvAbout"
+        android:padding="10dp"
+        android:textColor="@android:color/white"
+        android:textAlignment="center" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvSomething"
+        android:text="Something"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:padding="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvContactUs"
+        android:textAlignment="center"
+        android:text="Contact us"
+        android:textColor="@android:color/white"
+        android:padding="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvRateThisApp"
+        android:text="Rate this app"
+        android:textColor="@android:color/white"
+        android:textAlignment="center"
+        android:padding="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvGoBack"
+        android:text="Go back"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:padding="10dp" />
+
+</LinearLayout>
