@@ -19,4 +19,4 @@ Lab Assignment 7: https://github.com/saidu941/ASE-Lab-Assignments/tree/master/La
 
 Lab Assignment 8: https://github.com/saidu941/ASE-Lab-Assignments/tree/master/Lab%20Assignment%208
 
-Lab Assigment 9: https://github.com/saidu941/ASE-Lab-Assignments/tree/master/Lab%20Assignment%209
+Lab Assignment 9: https://github.com/saidu941/ASE-Lab-Assignments/tree/master/Lab%20Assignment%209
