@@ -16,3 +16,5 @@ Lab Assignment 5: https://github.com/saidu941/ASE-Lab-Assignments/wiki/Lab-Assig
 Lab Assignment 6: https://github.com/saidu941/ASE-Lab-Assignments/tree/master/Lab%20Assignment%206
 
 Lab Assignment 7: https://github.com/saidu941/ASE-Lab-Assignments/tree/master/Lab%20Assignment%207
+
+Lab Assignment 8: https://github.com/saidu941/ASE-Lab-Assignments/tree/master/Lab%20Assignment%208
